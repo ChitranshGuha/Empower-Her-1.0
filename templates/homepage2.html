@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empower Her</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbox.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='mainlogo1.png') }}" type="image/x-icon">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/mainlogo1.png') }}" alt="" class="profile-image">
+            Empower Her
+        </div>
+        <div class="right">
+            <a href="http://127.0.0.1:5000/feedback" class="profile-image">
+                <img src="{{ url_for('static', filename='images/feedback.jpg') }}" alt="Feedback">
+            </a>
+    
+            <a href="http://127.0.0.1:5000/notifications" class="profile-image">
+                <img src="{{ url_for('static', filename='images/bellicon.png') }}" alt="Notifications">
+            </a>
+            <a href="{{ url_for('job_posting.job_form') }}" class="btn">Post Job</a>
+            <a href="{{ url_for('jobs.choose3skills') }}" class="btn">Find Job</a>
+            <a href="http://127.0.0.1:5000/overview" class="profile-image">
+                <!-- Profile photo -->
+                <img src="{{ url_for('uploads', filename='pfp.png') }}" alt="Profile" class="profile-pic">
+            </a>
+        </div>
+    </div>
+    
+    <!-- About Us -->
+    <div class="about-container">
+        <div class="about-content">
+            <h2 style="font-family: 'Georgia', serif; font-size: 2.5em; color: #333;">About Us</h2>
+            <p style="font-family: 'Arial', sans-serif; font-size: 1.2em; color: #333;">
+                We are dedicated to empowering women through various initiatives and support systems. Our mission is to connect women with opportunities that enhance their skills and help them succeed in their careers. We believe in a world where every woman can thrive and achieve her full potential.
+            </p>
+            <p style="font-family: 'Arial', sans-serif; font-size: 1.2em; color: #333;">
+                Our approach involves community building, skill development, and providing resources that are tailored to women's unique needs. Join us and be part of a transformative journey!
+            </p>
+        </div>
+        <div class="about-image"></div>
+    </div>
+
+
+    <!-- Central content -->
+    <div style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+        <!-- Central content -->
+        <div class="containercentral" style="flex: 1;">
+            <div class="content">
+                <h2 style="font-family: 'Playfair Display', serif;">Empower Women to Succeed</h2>
+                <p>We help women find opportunities that match their skills. Join us today!</p>
+                <button class="btn" onclick="openChat()">Contact Us</button>
+                <br>
+                <a href="https://pib.gov.in/PressReleasePage.aspx?PRID=1947403#:~:text=The%20Ministry%20of%20Minority%20Affairs,were%20earmarked%20for%20female%20trainees."
+                   style="color: darkblue; text-decoration: none;"
+                   onmouseover="this.style.textDecoration='underline';"
+                   onmouseout="this.style.textDecoration='none';">Learn more about skills</a>
+            </div>
+            
+            <div class="content">
+                <h2 style="font-family: 'Playfair Display', serif;">Join Our Community</h2>
+                <p>Become a part of a network that uplifts women. Your journey starts here!</p>
+                <button class="btn" onclick="openChat()">Get Involved</button>
+                <br>
+                <a href="#"
+                   style="color: darkblue; text-decoration: none;"
+                   onmouseover="this.style.textDecoration='underline';"
+                   onmouseout="this.style.textDecoration='none';">Discover more</a>
+            </div>
+        </div>
+    </div>
+    
+        <!-- Find button -->
+        <div>
+            <!-- <a href="{{ url_for('jobs.choose3skills') }}" class="find-btn" style="position: absolute; right: 20px; top: 20px;">Find</a> -->
+
+        </div>
+        
+    </div>
+    <!-- Carousel Section -->
+    <section class="carousel-section">
+        <h2>Our Satisfied Customers</h2>
+        <div class="carousel-container">
+            <div class="carousel-slide">
+            <img src="{{ url_for('static', filename='images/review/1.png') }}" alt="Customer 1">
+            <img src="{{ url_for('static', filename='images/review/2.png') }}" alt="Customer 2">
+            <img src="{{ url_for('static', filename='images/review/3.png') }}" alt="Customer 3">
+            <img src="{{ url_for('static', filename='images/review/4.png') }}" alt="Customer 4">
+            <img src="{{ url_for('static', filename='images/review/1.png') }}" alt="Customer 5">
+            </div>
+            <button class="prev-btn">&#10094;</button>
+            <button class="next-btn">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Query Section -->
+    <div id="section7" class="sectionn">
+        <div class="containerCU">
+            <div class="OL5">
+                <img style="width: 80%; height: auto;" src="{{ url_for('static', filename='images/queryimg.png') }}" alt="">
+            </div>
+            <div class="OR5">
+                <p style="font-size: 2.5vw; color: blue; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Have any Queries</p>
+                <p style="font-size: 1.5vw;">Feel free to reach out to us, We are 24x7 available for your help</p>
+                <form id="userinfo">
+                    <div>
+                        <input type="text" id="username" name="username" placeholder="Name" />
+                    </div>
+                    <div><br></div>
+                    <div>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" />
+                    </div>
+                    <div><br></div>
+                    <div>
+                        <input type="email" id="email" name="email" placeholder="Email" />
+                    </div>
+                    <div><br></div>
+                    <div>
+                        <textarea id="query" name="query" placeholder="Enter your query message" rows="10" cols="50"></textarea>
+                        <input type="submit" value="Send" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbox -->
+    <!-- Chatbox -->
+<div id="chatBox" class="chatbox" style="display:none;">
+    <div class="chat-header">
+        <h4>Customer Support</h4>
+        <button onclick="closeChat()">X</button>
+    </div>
+    <div class="chat-body" id="chatMessages">
+        <p>Customer Service: Hello! How can I help you?</p>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="chatInput" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+
+    <!-- About Section -->
+    <div id="section8" class="sectio">
+        <div class="LEOF">
+            <a href="https://www.google.com/maps/place/Shri+Govindram+Seksaria+Institute+of+Technology+and+Science/data=!4m7!3m6!1s0x3962fd13ed2bae49:0xb884fc340de875c6!8m2!3d22.7252285!4d75.871344!16zL20vMGJyMXc4!19sChIJSa4r7RP9YjkRxnXoDTT8hLg?authuser=0&hl=en&rclk=1">
+                <img style="width: 8%; height: auto;" src="{{ url_for('static', filename='images/location.png') }}" alt="location">
+            </a>
+            <br>
+            <span>23, Sir M. Visvesvaraya Marg, Vallabh Nagar, Indore, Madhya Pradesh 452003 (click icon to reach us)</span>
+        </div>
+        <div class="MEOF"></div>
+        <div class="REOF">
+            <p>+91 12345567890 <br> contact@empowerher.com</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+
+    <script>
+        const socket = io();
+    
+        // Emit userType as 'customer'
+        socket.emit('userType', 'customer');
+    
+        document.getElementById('chatInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    
+        function openChat() {
+            document.getElementById("chatBox").style.display = "block";
+            document.getElementById("chatInput").focus(); // Focus on input when chat opens
+        }
+    
+        function closeChat() {
+            document.getElementById("chatBox").style.display = "none";
+        }
+    
+        function sendMessage() {
+            const input = document.getElementById("chatInput").value;
+            if (input.trim() !== "") {
+                socket.emit('customerMessage', input); // Emit the message
+                document.getElementById("chatInput").value = ""; // Clear the input field
+            }
+        }
+    
+        // Listen for incoming messages
+        socket.on('agentMessage', function(msg) {
+            appendMessage("Customer Service: " + msg);
+        });
+    
+        function appendMessage(message) {
+            const chatMessages = document.getElementById("chatMessages");
+            const messageElement = document.createElement("p");
+            messageElement.innerText = message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+        }
+    </script>
+    
+
+    
+</body>
+
+</html>

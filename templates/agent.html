@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Agent</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='mainlogo1.png') }}" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="chatbox.css"> -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex; /* Add this to center the chat box */
+            justify-content: center; /* Add this to center the chat box */
+            align-items: center; /* Add this to center the chat box vertically */
+            height: 100vh; /* Add this to center the chat box vertically */
+        }
+
+        /* Chat Box Styles */
+        .chatbox {
+            width: 400px;
+            margin: 40px auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 500px;
+        }
+
+        .chat-body p {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .chat-body p:last-child {
+            border-bottom: none;
+        }
+
+        .chat-footer {
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-top: 1px solid #ccc;
+        }
+
+        #chatInput {
+            width: 80%;
+            height: 30px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #chatInput:focus {
+            outline: none;
+            border-color: #66afe9;
+            box-shadow: 0 0 10px rgba(102, 175, 233, 0.6);
+        }
+
+        button {
+            width: 15%;
+            height: 30px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        /* Message Styles */
+        .chat-body p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .chat-body p span {
+            font-weight: bold;
+            color: #337ab7;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Customer Service Chat</h3>
+    <div id="chatBox" class="chatbox">
+        <div class="chat-body" id="chatMessages">
+            <p>Customer Service is ready to assist!</p>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message..." />
+            <button onclick="sendAgentMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+    
+        // Notify the server that this user is an agent
+        socket.emit('userType', 'agent');
+    
+        document.getElementById('chatInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                sendAgentMessage();
+            }
+        });
+    
+        function sendAgentMessage() {
+            const input = document.getElementById("chatInput").value;
+            if (input.trim() !== "") {
+                appendMessage("You: " + input);
+                socket.emit('agentMessage', input);
+                document.getElementById("chatInput").value = "";
+            }
+        }
+    
+        // Listen for incoming messages from customers
+        socket.on('customerMessage', function(msg) {
+            appendMessage("Customer: " + msg);
+        });
+    
+        function appendMessage(message) {
+            const chatMessages = document.getElementById("chatMessages");
+            const messageElement = document.createElement("p");
+            messageElement.innerText = message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
+    
+</body>
+
+</html>

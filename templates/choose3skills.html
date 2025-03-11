@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <title>Job Search</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='mainlogo1.png') }}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jobs.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Find Jobs</h1>
+        <form action="/jobs" method="post">
+            <label for="skill1">Skill 1:</label>
+            <select name="skill1" required>
+                <option value="" disabled selected>Select a skill</option>
+                <option value="beautician">Beautician</option>
+                <option value="caretaker">Caretaker</option>
+                <option value="homecook">Home Cook</option>
+                <option value="hostel_cook">Hostel Cook</option>
+                <option value="housekeeper">Housekeeper</option>
+                <option value="laundary">Laundry</option>
+                <option value="nanny">Nanny</option>
+                <option value="playschool_teacher">Playschool Teacher</option>
+                <option value="shop_attendant">Shop Attendant</option>
+            </select><br>
+
+            <label for="skill2">Skill 2:</label>
+            <select name="skill2">
+                <option value="" disabled selected>Select a skill</option>
+                <option value="beautician">Beautician</option>
+                <option value="caretaker">Caretaker</option>
+                <option value="homecook">Home Cook</option>
+                <option value="hostel_cook">Hostel Cook</option>
+                <option value="housekeeper">Housekeeper</option>
+                <option value="laundary">Laundry</option>
+                <option value="nanny">Nanny</option>
+                <option value="playschool_teacher">Playschool Teacher</option>
+                <option value="shop_attendant">Shop Attendant</option>
+            </select><br>
+
+            <label for="skill3">Skill 3:</label>
+            <select name="skill3">
+                <option value="" disabled selected>Select a skill</option>
+                <option value="beautician">Beautician</option>
+                <option value="caretaker">Caretaker</option>
+                <option value="homecook">Home Cook</option>
+                <option value="hostel_cook">Hostel Cook</option>
+                <option value="housekeeper">Housekeeper</option>
+                <option value="laundry">Laundry</option>
+                <option value="nanny">Nanny</option>
+                <option value="playschool_teacher">Playschool Teacher</option>
+                <option value="shop_attendant">Shop Attendant</option>
+            </select><br>
+
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Home button -->
+        <div style="margin-top: 20px;">
+            <a href="{{ url_for('homepage2') }}" class="home-btn" style="display: inline-block; padding: 10px 15px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Home</a>
+        </div>
+    </div>
+</body>
+</html>

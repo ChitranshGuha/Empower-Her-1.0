@@ -1,0 +1,51 @@
+<!-- templates/job_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/job_form.css') }}">
+    <title>Job Posting Form</title>
+</head>
+<body>
+    <h1>Job Posting Form</h1>
+    <form action="/submit_job" method="post">
+        <label for="job_type">Job Type:</label>
+        <select id="job_type" name="job_type" required>
+            <option value="beautician">Beautician</option>
+            <option value="caretaker">Caretaker</option>
+            <option value="homecook">Home Cook</option>
+            <option value="hostel_cook">Hostel Cook</option>
+            <option value="housekeeper">Housekeeper</option>
+            <option value="laundry">Laundry</option>
+            <option value="nanny">Nanny</option>
+            <option value="playschool_teacher">Playschool Teacher</option>
+            <option value="shop_attendant">Shop Attendant</option>
+        </select>
+        <br>
+    
+        <label for="organization">Organization Name:</label>
+        <input type="text" id="organization" name="name_of_organization" required>  <!-- Updated name -->
+        <br>
+    
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone_number" required>
+        <br>
+    
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+        <br>
+    
+        <label for="salary">Salary Offered:</label>
+        <input type="number" id="salary" name="salary" required>
+        <br>
+    
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="emailid" required>
+        <br>
+    
+        <button type="submit">Submit Job</button>
+    </form>
+    
+</body>
+</html>

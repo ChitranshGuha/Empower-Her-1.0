@@ -1,0 +1,323 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background image styling */
+.background {
+    position: fixed; /* Fix the background to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/ch1.jpeg'); /* Add your background image here */
+    background-size: cover; /* Ensure the background covers the whole area */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    background-position: center;
+    z-index: -1; /* Make sure the background stays behind all content */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), url('/ch2.jpeg'));
+}
+
+.logo {
+    font-size: 40px; /* Adjust font size to your liking */
+    font-weight: bold; /* Add boldness to the font */
+    font-family: 'Playfair Display', serif; /* Use Playfair Display as the font family */
+    color: #333; /* Set the text color to a dark gray */
+    margin-left: 20px; /* Add some margin to the left */
+  }
+
+/* General styling for the header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(222, 250, 255, 1);
+    background-color: #a6f3ff;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1; /* Ensure header stays above the background */
+    height: 15vh;
+}
+
+/* Right section of header (Login/Signup/Profile) */
+.header .right {
+    display: flex;
+    align-items: center;
+}
+
+/* Buttons for Login and Sign Up */
+.header .btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header .btn:hover {
+    background-color: darkblue;
+}
+.header .profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 20px;
+    overflow: hidden;
+  }
+  
+  .header .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .header .icon-btn {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.header .icon-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Optional, to match profile image style */
+}
+/* About Us Section */
+.about-container {
+    display: flex;
+    height: 75vh; /* Height of the section */
+    position: relative;
+    padding: 5%;
+    margin-top: 1%;
+    background-image: url('/static/images/backg.jpeg'); 
+}
+
+.about-content {
+    flex: 1;
+    /* background-color: rgba(255, 255, 255, 0.8); White background with slight transparency */
+    /* padding: 40px; Padding for the content */
+    border-radius: 10px; /* Rounded corners */
+    z-index: 1; /* Ensure content stays above the background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the text vertically */
+    z-index: 2;
+
+}
+
+.about-image {
+    flex: 1;
+    /* backg image */
+    /* background-image: url('/static/images/backg.jpeg');  */
+    background-size: cover; /* Scale the image to cover the area */
+    background-position: center; /* Center the image */
+    position: relative;
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)); /* Fade effect */
+    z-index: 2; 
+} 
+.about-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)); /* Fade effect */
+    z-index: 2; /* Ensure fade is above the image */
+}
+
+/* Central content styling */
+.containercentral {
+    display: flex;
+    justify-content: space-around; /* Space boxes evenly */
+    background-image: url('/ch2.jpeg'); /* Background image */
+    background-size: cover; /* Scale the image */
+    background-position: center; /* Center the image */
+    padding: 20px; /* Padding for space */
+    /* height: 75vh; Height of the container */
+    margin-top: 1%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%; /* Make sure each box takes less than half */
+    text-align: center;
+    background-color: rgba(222, 250, 255, 1);
+    /* padding: 40px; */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* z-index: 1; Ensure content stays above the background */
+}
+  
+  .image-right {
+    flex-basis: 40%;
+    margin: 20px;
+    height: 100%; /* add this to make the image take up the full height of the container */
+    object-fit: cover; /* add this to scale the image to cover the entire width and height */
+  }
+  .btn:hover{
+    background-color: greenyellow; 
+  }
+/* Carousel section */
+.carousel-section {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px; /* Add margin to prevent overlap with other content */
+    position: relative;
+    z-index: 1; /* Ensure carousel stays above the background */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add background to the carousel section to make it clearer */
+    border-radius: 10px;
+}
+
+/* Carousel container */
+.carousel-container {
+    position: relative;
+    width: 60%; /* Adjust the width as needed */
+    height: 400px; /* Set a fixed height for the images */
+    margin: 0 auto;
+    overflow: hidden; /* Hide the overflowing images */
+}
+
+/* Carousel slide */
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+/* Each image inside the carousel */
+.carousel-slide img {
+    min-width: 100%; /* Ensure each image takes up the full carousel width */
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Left and right arrow buttons */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+
+
+/* QUERY */
+#section7 {
+    background-color: #d9faff;
+    /* margin-bottom: 35%; */
+    height: 90%;
+}
+.containerCU {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: -10%;
+}
+
+.OL5 {
+    flex: 1;
+    padding: 2%;
+    box-sizing: border-box;
+    font-size: 1.5vw;
+}
+.OR5 {
+    flex: 2;
+    padding: 2%;
+    box-sizing: border-box;
+    font-size: 1.5vw;
+}
+input[type=submit] {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    border-radius: 40%;
+    cursor: pointer;
+  }
+
+  .sectionn {
+    padding: 8% 5%;
+    /* height: 100vh; */
+    box-sizing: border-box;
+}
+
+/* last */
+#section8{
+    color: aliceblue;
+    background-color: #00367d;
+    display: flex;
+    margin: 0;
+    padding: 5%;
+    width: 100%;
+    /* height: 20%; */
+    margin-left: -5%;
+    overflow-x: hidden;
+}
+.LEOF{
+    flex: 0.3;
+    /* margin-left: 5% ; */
+}
+.MEOF{
+    flex: 0.4;
+    margin: 5%;
+}
+.REOF {
+    flex: 0.3;
+    /* display: flex; */
+    /* justify-content: space-around; */
+    /* align-items: center; */
+    margin-right: -10%;
+}
+
+.social-icon{
+    height: 1%;
+    width: auto;
+    padding-left: 5%; 
+}
+
+.social-icon:last-child {
+    padding-right: 5%; 
+}

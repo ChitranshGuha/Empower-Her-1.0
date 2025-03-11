@@ -1,0 +1,119 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9f7fb; /* Light background with a hint of blue */
+    color: #333; /* Dark text for readability */
+}
+
+header {
+    background: #0d3b66; /* Dark blue header */
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav a {
+    color: #ffffff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #a6f3ff; /* Light cyan hover effect */
+    text-decoration: underline;
+}
+
+main {
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 12px; /* Slightly rounded corners for a modern look */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Softer, more pronounced shadow */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, button {
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd; /* Subtle border color */
+    font-size: 1rem;
+    transition: all 0.3s ease; /* Smooth transitions for interactions */
+}
+
+input {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+input:focus {
+    border-color: #a6f3ff; /* Highlight border color on focus */
+    outline: none;
+}
+
+button {
+    background: #0d3b66; /* Dark blue button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: #0a2c47; /* Darker blue on hover */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.danger {
+    color: #e74c3c; /* Red for danger */
+}
+
+.success {
+    color: #2ecc71; /* Green for success */
+}
+
+.warning {
+    color: #f39c12; /* Orange for warnings */
+}
+
+footer {
+    background: #35424a;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #a6f3ff; /* Light blue link in footer */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

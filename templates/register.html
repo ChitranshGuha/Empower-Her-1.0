@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesloginNreg.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='mainlogo1.png') }}" type="image/x-icon">
+    <style>
+        .password-constraints {
+            font-size: 0.85em; /* Smaller font size for constraints */
+            color: #555; /* Darker grey for better visibility */
+            margin-top: 5px; /* Space above the constraints */
+            list-style-type: none; /* Remove default list styling */
+            padding: 0; /* Remove default padding */
+        }
+        .show-password {
+            margin-top: 10px; /* Space above the checkbox */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Register</h1>
+    </header>
+    <main>
+        <form method="POST" action="{{ url_for('userlogin.register') }}">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+            
+            <div class="show-password">
+                <input type="checkbox" id="show_password" onclick="togglePasswordVisibility()">
+                <label for="show_password">Show Password</label>
+            </div>
+            
+            <div class="password-constraints">
+                <ul>
+                    <li>Password must be at least 12 characters long.</li>
+                    <li>Password must contain at least one lowercase letter.</li>
+                    <li>Password must contain at least one uppercase letter.</li>
+                    <li>Password must contain at least one digit.</li>
+                </ul>
+            </div>
+            <br>
+            <button type="submit">Register</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </main>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('confirm_password');
+            const showPasswordCheckbox = document.getElementById('show_password');
+
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = 'text';
+                confirmPasswordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+                confirmPasswordField.type = 'password';
+            }
+        }
+    </script>
+</body>
+</html>

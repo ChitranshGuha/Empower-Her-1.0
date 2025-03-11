@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Overview</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='mainlogo1.png') }}" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif; /* Changed font style */
+            background-color: #e3f2fd; /* Light blue background */
+            padding: 20px;
+            color: #333; /* Dark text color */
+            line-height: 1.6; /* Improved line height for readability */
+            margin: 0; /* Remove default margin */
+        }
+        h1 {
+            text-align: center;
+            color: #1976d2; /* Blue header color */
+            margin-bottom: 30px;
+            font-size: 2.5em; /* Larger header font size */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+        }
+        .profile-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 900px; /* Increased max width */
+            margin: auto;
+            display: flex; /* Flex layout for side-by-side display */
+            align-items: flex-start; /* Align items at the start */
+            gap: 30px; /* Space between photo and details */
+        }
+        .profile-image {
+            width: 40px; /* or the size used in overview.html */
+            height: 40px; /* or the size used in overview.html */
+            border-radius: 50%; /* This makes it circular */
+            object-fit: cover; /* Ensures the image covers the whole area */
+        }
+        .profile-detail {
+            margin-bottom: 15px;
+            flex: 1; /* Allow details to take available space */
+        }
+        .profile-detail label {
+            font-weight: bold;
+            color: #1976d2; /* Blue text for labels */
+            font-size: 1.3em; /* Larger font size for labels */
+        }
+        .profile-detail span {
+            font-size: 1.2em; /* Font for values */
+            display: block; /* Display values in block for better spacing */
+            margin-top: 5px; /* Space between label and value */
+            margin-left: 0.5em; /* Indentation for better alignment */
+        }
+        a {
+            color: #1976d2; /* Blue link color */
+            text-decoration: none; /* No underline */
+            font-weight: bold; /* Bold text for links */
+        }
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        button {
+            margin-top: 20px; /* Space above button */
+            padding: 10px 20px; /* Button padding */
+            font-size: 1em; /* Font size for button */
+            background-color: #1976d2; /* Button color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+        }
+        button:hover {
+            background-color: #155a8a; /* Darker shade on hover */
+        }
+        @media (max-width: 600px) {
+            .profile-container {
+                flex-direction: column; /* Stack image and details on smaller screens */
+                align-items: center; /* Center items */
+            }
+            .profile-image {
+                margin-bottom: 20px; /* Space below image */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Profile Overview</h1>
+<div class="profile-container" id="profile-container">
+    <img src="" alt="Profile Picture" class="profile-image" id="profile-image">
+    <div>
+        <div class="profile-detail">
+            <label>Name:</label> <span id="profile-name"></span>
+        </div>
+        <div class="profile-detail">
+            <label>Age:</label> <span id="profile-age"></span>
+        </div>
+        <div class="profile-detail">
+            <label>Contact Number:</label> <span id="profile-contact"></span>
+        </div>
+        <div class="profile-detail">
+            <label>Location:</label> <span id="profile-location"></span>
+        </div>
+        <div class="profile-detail">
+            <label>Job Preferences:</label> <span id="profile-job-preferences"></span>
+        </div>
+        <div class="profile-detail">
+            <label>Preferred Working Hours:</label> <span id="profile-working-hours"></span>
+        </div>
+        <div class="profile-detail">
+            <label>Bio:</label> <span id="profile-bio"></span>
+        </div>
+        <div class="profile-detail">
+            <label>ID Proof:</label> <a href="#" id="profile-id-proof" target="_blank">View ID Proof</a>
+        </div>
+    </div>
+</div>
+
+<button onclick="window.location.href='/homepage2'">Home</button>
+
+<script>
+    // Function to display the profile information
+    function displayProfile(profile) {
+        document.getElementById('profile-image').src = `uploads/${profile.profile_picture}`;
+        document.getElementById('profile-name').textContent = profile.name;
+        document.getElementById('profile-age').textContent = profile.age;
+        document.getElementById('profile-contact').textContent = profile.contact_no;
+        document.getElementById('profile-location').textContent = profile.location;
+        document.getElementById('profile-job-preferences').textContent = profile.job_preferences;
+        document.getElementById('profile-working-hours').textContent = profile.working_hours;
+        document.getElementById('profile-bio').textContent = profile.bio;
+        document.getElementById('profile-id-proof').href = `uploads/${profile.id_proof}`;
+    }
+
+    // Fetch profile data from the backend
+    fetch('http://127.0.0.1:5000/personalize/profile-overview')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(profiles => {
+            // Display the last submitted profile (for demonstration)
+            if (profiles.length > 0) {
+                const lastProfile = profiles[profiles.length - 1];
+                displayProfile(lastProfile);
+            } else {
+                document.getElementById('profile-container').innerHTML = '<p>No profiles found.</p>';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching profiles:', error);
+            document.getElementById('profile-container').innerHTML = '<p>Error fetching profiles.</p>';
+        });
+</script>
+
+</body>
+</html>

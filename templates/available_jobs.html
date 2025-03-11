@@ -1,0 +1,27 @@
+<!-- available_jobs.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Jobs</title>
+</head>
+<body>
+    <h1>Available Jobs</h1>
+    {% if jobs %}
+        <ul>
+            {% for job in jobs %}
+                <li>
+                    <strong>{{ job.name_of_organization }}</strong><br>
+                    Phone: {{ job.phone_number }}<br>
+                    Location: {{ job.location }}<br>
+                    Salary: {{ job.salary }}<br>
+                    <button onclick="alert('You have applied for this job!')">Apply</button>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No jobs available for your skills.</p>
+    {% endif %}
+</body>
+</html>
